@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Card</title>
+  <style>
+    :root{
+      --bg:#f7f3ff;
+      --card:#ffffff;
+      --accent:#ff7ab6;
+      --accent2:#6dd3ff;
+      --text:#2b2b3a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(closest-side at 10% 10%, rgba(255,255,255,0.6), transparent), var(--bg);
+      padding:40px;
+    }
+    .scene{
+      width:100%;
+      max-width:900px;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+    }
+
+    /* Card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));
+      border-radius:18px;
+      padding:32px;
+      box-shadow:0 10px 30px rgba(20,20,60,0.08);
+      position:relative;
+      overflow:hidden;
+      min-height:320px;
+    }
+    .card::after{
+      content:"";
+      position:absolute; inset:0; pointer-events:none;
+      background-image: radial-gradient(circle at 10% 10%, rgba(255,122,182,0.08), transparent 4%),
+                        radial-gradient(circle at 90% 80%, rgba(109,211,255,0.06), transparent 6%);
+    }
+
+    h1{
+      margin:0 0 6px 0;
+      font-size:32px;
+      color:var(--text);
+    }
+    p.lead{
+      margin:0 0 18px 0;
+      color:#646477;
+    }
+
+    .name-edit{
+      display:flex; gap:8px; align-items:center; margin-top:6px;
+    }
+    .name-display{
+      font-weight:700; font-size:22px; color:var(--accent);
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      border:none; color:white; padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600;
+      box-shadow:0 6px 18px rgba(255,122,182,0.18);
+    }
+
+    /* Balloons */
+    .side{
+      background:transparent;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      flex-direction:column;
+    }
+    .balloon{
+      width:120px; height:150px; border-radius:60% 60% 60% 60% / 60% 60% 40% 40%;
+      position:relative; display:flex; align-items:center; justify-content:center; color:white; font-weight:700;
+      transform-origin:center bottom;
+    }
+    .balloon::after{
+      content:""; position:absolute; bottom:-18px; left:50%; transform:translateX(-50%);
+      width:2px; height:26px; background:linear-gradient(#5552,#0000); border-radius:4px;
+    }
+
+    .b1{ background: linear-gradient(180deg,#ffd5e6,#ff7ab6); animation:float 4s ease-in-out infinite;}
+    .b2{ background: linear-gradient(180deg,#c8f0ff,#6dd3ff); width:100px; height:130px; animation:float 3.6s ease-in-out infinite; }
+    .b3{ background: linear-gradient(180deg,#fff1c4,#ffd166); width:90px; height:110px; animation:float 4.6s ease-in-out infinite; }
+
+    @keyframes float{
+      0%{transform:translateY(0) rotate(-2deg)}
+      50%{transform:translateY(-12px) rotate(2deg)}
+      100%{transform:translateY(0) rotate(-2deg)}
+    }
+
+    /* Cake */
+    .cake{
+      margin-top:18px; display:flex; gap:10px; align-items:center;
+    }
+    .cake .layer{width:84px; height:20px; background:#ffe7f2; border-radius:8px; box-shadow:0 6px 12px rgba(0,0,0,0.06) inset;}
+    .cake .icing{height:10px; width:90px; background:linear-gradient(90deg,#ffb6db,#ffd7a6); border-radius:8px; margin-top:-8px;}
+    .candle{font-size:28px; transform-origin:center bottom; animation:flicker 1.6s infinite;}
+    @keyframes flicker{ 0%{transform:translateY(0)} 50%{transform:translateY(-2px)} 100%{transform:translateY(0)} }
+
+    /* Confetti */
+    .confetti{
+      position:absolute; inset:0; pointer-events:none; overflow:hidden;
+    }
+    .confetti i{position:absolute; width:8px; height:14px; background:#ff9; opacity:0.95; transform:rotate(20deg); animation:drop 3.2s linear infinite;}
+    .confetti i:nth-child(2n){width:6px;height:10px}
+    @keyframes drop{ 0%{transform:translateY(-20vh) rotate(0) } 100%{transform:translateY(120vh) rotate(360deg)} }
+
+    /* responsive */
+    @media (max-width:880px){
+      .scene{grid-template-columns:1fr;}
+      .side{flex-direction:row}
+    }
+
+    footer{margin-top:14px; color:#7a788a; font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="card">
+      <div class="confetti" aria-hidden>
+        <!-- a few confetti pieces -->
+        <i style="left:10%; animation-delay:0s; background:#ff7ab6"></i>
+        <i style="left:22%; animation-delay:0.4s; background:#6dd3ff"></i>
+        <i style="left:34%; animation-delay:0.8s; background:#ffd166"></i>
+        <i style="left:49%; animation-delay:0.2s; background:#ffb6db"></i>
+        <i style="left:63%; animation-delay:0.6s; background:#9bffb3"></i>
+        <i style="left:78%; animation-delay:0.9s; background:#ffd5e6"></i>
+      </div>
+
+      <h1>Happy Birthday Mam </h1>
+      <p class="lead">My special one wishing you a very happy birthday may bihariji bless you with abundant joy in your life.May all errors in your life detect and run successfully.The time i had spend with you are very less but a part of happiness,motivation and joy.You are the fantastic person and a beautiful gift for me.love you so much.</p>
+
+      <!-- Photo section -->
+      <div style="margin:18px 0; display:flex; justify-content:center;">
+        <img src="C:\Users\Dell\OneDrive\Desktop\project\WhatsApp Image 2025-11-28 at 19.42.24_2373340a.jpg" alt="Birthday Photo" style="width:220px; height:auto; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.12); object-fit:cover;" />
+      </div>
+
+      <div class="name-edit">
+        <div>
+          <div class="name-display" id="recipient">Mam</div>
+          <small style="color:#9a98ad">(click "Edit name" to personalize)</small>
+        </div>
+        <div style="margin-left:auto; display:flex; gap:8px">
+          <button class="btn" id="editBtn">Edit name</button>
+          <button class="btn" id="downloadBtn">Download</button>
+        </div>
+      </div>
+
+      <div class="cake" aria-hidden>
+        <div>
+          <div class="layer"></div>
+          <div class="icing"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center">
+          <div class="candle">🕯️</div>
+          <div style="font-size:12px;color:#8b86a6">Make a wish</div>
+        </div>
+      </div>
+
+      <footer>Sent with ❤️ — your student</footer>
+    </div>
+
+    <aside class="side" aria-hidden>
+      <div class="balloon b1">🎈</div>
+      <div class="balloon b2">🎉</div>
+      <div class="balloon b3">✨</div>
+    </aside>
+  </div>
+
+  <script>
+    // small interactivity: edit name and download card as image
+    const editBtn = document.getElementById('editBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const recipient = document.getElementById('recipient');
+
+    editBtn.addEventListener('click', ()=>{
+      const name = prompt('Enter recipient name', recipient.textContent) || 'Friend';
+      recipient.textContent = name;
+    });
+
+    // download screenshot of the card (uses SVG foreignObject)
+    downloadBtn.addEventListener('click', async ()=>{
+      const card = document.querySelector('.card');
+      const rect = card.getBoundingClientRect();
+      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${rect.width}' height='${rect.height}'><foreignObject width='100%' height='100%'>${new XMLSerializer().serializeToString(card)}</foreignObject></svg>`;
+      const blob = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'birthday-card.svg';
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
