@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title> Image Gallery </title>
+        <link rel="stylesheet" href="styless.css">
+    </head>
+    <body> 
+<section id="gallery">
+    <h2 class="section-title">Our Gallery</h2>
+
+    <div class="gallery-container">
+        <div class="testimonial-slider">
+
+        </div>
+
+    <div class="gallery-grid">
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\Amazing-Red-Sunset-Wallpapers-HD-Free-Download.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\GettyImages-1069283718.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\cake-pictures-xg4b2t7kk9r25yfb.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\1939291.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\Maa-Yashoda.webp"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\stunning-sun-in-fields-0nwhbqpf8z7uk4wq.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\teacher-hnlnd76tuq5wxeaz.jpg"></div>
+        <div class="grid-item"><img src="C:\Users\Dell\Downloads\Chocolate-Strawberry-Ice-Cream-5.jpg"></div>
+    </div>
+</section>
+
+
+        <!-- Arrows -->
+        <span class="arrow left" onclick="moveSlide(-1)">&#10094;</span>
+        <span class="arrow right" onclick="moveSlide(1)">&#10095;</span>
+
+        <!-- Dots -->
+        <div class="dots"></div>
+    </div>
+</section>
+
+  <footer>
+    © 2025 Image Gallery| 
+    <a href="#">Privacy Policy</a> | 
+    <a href="#">Terms</a>
+  </footer>
+  <script>
+let startIndex = 0;
+const itemsPerPage = 4;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".grid-item");
+  showImages();
+});
+
+function showImages() {
+  const items = document.querySelectorAll(".grid-item");
+  items.forEach((item, i) => {
+    item.style.display =
+      i >= startIndex && i < startIndex + itemsPerPage
+        ? "block"
+        : "none";
+  });
+}
+
+function moveSlide(step) {
+  const items = document.querySelectorAll(".grid-item");
+  startIndex += step * itemsPerPage;
+
+  if (startIndex < 0) startIndex = 0;
+  if (startIndex >= items.length) startIndex = items.length - itemsPerPage;
+
+  showImages();
+}
+</script>
+    </body>
+</html>
